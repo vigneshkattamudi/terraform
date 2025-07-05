@@ -13,7 +13,7 @@ This Terraform configuration provisions an AWS EC2 instance (`t2.micro`) with a 
    ```bash
    git clone https://github.com/vigneshkattamudi/terraform.git
    cd terraform
-````
+    ````
 
 2. Create a file named `terraform.tfvars` or provide variables via CLI/environment, and specify the AMI ID:
 
