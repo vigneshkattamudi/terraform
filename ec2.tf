@@ -7,7 +7,7 @@ resource "aws_instance" "terraform-ec2" {
   }
 }
 
-resource "aws_security_group" "allow_all" {
+resource "aws_security_group" "allow-all" {
   name        = "allow-all"
   description = "Allow all traffic"
 
@@ -27,6 +27,6 @@ resource "aws_security_group" "allow_all" {
 
 
   tags = {
-    Name = "allow_all"
+    Name = "allow-all"
   }
 }
