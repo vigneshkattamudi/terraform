@@ -1,58 +1,112 @@
-# Terraform AWS EC2 Instance with Security Group
+### TERRAFROM
 
-This Terraform configuration provisions an AWS EC2 instance (`t2.micro`) with a security group that allows all inbound and outbound traffic.
+Below is the environment setup.
 
-## Resources
+**Softwares Required:**
 
-- **aws_instance.terraform-ec2**: Creates an EC2 instance using the AMI ID passed via variable `ami_id`.
-- **aws_security_group.allow_all**: Security group allowing all inbound and outbound traffic on all ports.
+* VS Code
+* Terraform
+* AWS CLI V2
 
-## Usage
+**Steps:**
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/vigneshkattamudi/terraform.git
-   cd terraform
-    ````
+* Create IAM administrator user. Copy the access key and secret key. Don't push to any GitHub or internet.
+* Configure user in your laptop using
+```
+aws configure
+```
+* Add the terraform path to system variables.
 
-2. Create a file named `terraform.tfvars` or provide variables via CLI/environment, and specify the AMI ID:
+![alt text](terraform.svg)
 
-   ```hcl
-   ami_id = "ami-xxxxxxxxxxxxxx"
-   ```
 
-3. Initialize Terraform:
+Terraform is popular IaC (Infrastructure as a Code) tool. It is best in the market now.
 
-   ```bash
-   terraform init
-   ```
+* **Version Control:** <br />
 
-4. Preview the resources to be created:
+    Since it is code, we can maintain in Git to version control. We can completely maintain the history of infra and collaboration is easy.
 
-   ```bash
-   terraform plan
-   ```
+* **Consistent Infra:** <br />
 
-5. Apply the configuration:
+    Often we face the problem of different configurations in different environments like DEV, QA, PROD, etc. Using terraform we can create similar infra in multiple environments with more reliability.
 
-   ```bash
-   terraform apply
-   ```
+* **Automated Infra CRUD:** <br />
 
-6. To destroy the resources:
+    Using terraform we can create entire infra in minutes reducing the human errors.
+    Updating infra using terraform is also easy.
+    Using Terraform we can delete infra.
 
-   ```bash
-   terraform destroy
-   ```
+* **Inventory Management:** <br />
 
-## Variables
+    If we create infra manually it is very tough to maintain the inventory of resources in diff region. But by seeing terraform you can easily tell the resources you are using in different regions.
 
-| Name    | Description                 | Type   |
-| ------- | --------------------------- | ------ |
-| ami\_id | AMI ID for the EC2 instance | string |
+* **Cost Optimisation:** <br />
 
-## Notes
+    When you need infra you can create in minutes. When you don't you can delete in minutes, so you can save the cost.
 
-* The security group allows all inbound and outbound traffic. Use with caution.
-* Ensure your AWS credentials are configured properly before running Terraform.
+* **Automatic dependency management:** <br />
 
+    terraform can understand the dependency of resources. It can tell us the dependency clearly.
+
+* **Modular Infra:** <br />
+    Code reuse. We can develop our own modules our use open source modules to reuse the infra code. instead of spending more time to create infra from the scratch we can reuse modules.
+
+#### Terraform Commands
+
+* First command is to initialize the terraform, at this stage terraform downloads the provider into .terraform folder.
+
+```
+terraform init
+```
+
+* Next we need to run plan command, at this stage terraform compares the infra between declared and existing. This is only plan terraform will not create
+
+```
+terraform plan
+```
+
+* Next we need to apply the infra, at this stage terraform create the infra with approval.
+
+```
+terraform apply
+```
+
+### Clarification
+
+While creating terraform resource, left side things are called as arguments, we have to use the same name as per terraform aws documentation. For example
+
+```
+resource "aws_instance" "terraform" {
+
+    ami = "ami-09c813fb71547fc4f"
+}
+```
+Here argument ami is from the documentation, right side is the value. You can directly provide the value.
+
+You may also keep the value in variable. Variable name is completely your wish.
+1. It can be same name like ami
+2. It can be different name like ami_id
+
+```
+resource "aws_instance" "terraform" {
+
+    ami = var.ami_id
+}
+
+variable "ami_id" {
+    default = "ami-09c813fb71547fc4f"
+}
+```
+
+or
+
+```
+resource "aws_instance" "terraform" {
+
+    ami = var.ami
+}
+
+variable "ami" {
+    default = "ami-09c813fb71547fc4f"
+}
+```
