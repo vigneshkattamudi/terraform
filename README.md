@@ -78,7 +78,7 @@ While creating terraform resource, left side things are called as arguments, we 
 ```
 resource "aws_instance" "terraform" {
 
-    ami = "ami-09c813fb71547fc4f"
+    ami = "ami-09cxxxxxxxxxxxxxxx"
 }
 ```
 Here argument ami is from the documentation, right side is the value. You can directly provide the value.
@@ -94,7 +94,7 @@ resource "aws_instance" "terraform" {
 }
 
 variable "ami_id" {
-    default = "ami-09c813fb71547fc4f"
+    default = "ami-09cxxxxxxxxxxxxxxx"
 }
 ```
 
@@ -107,6 +107,6 @@ resource "aws_instance" "terraform" {
 }
 
 variable "ami" {
-    default = "ami-09c813fb71547fc4f"
+    default = "ami-09cxxxxxxxxxxxxxxx"
 }
 ```
