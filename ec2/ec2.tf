@@ -1,14 +1,15 @@
-resource "aws_instance" "terraform-ec2" {
-  ami           = var.ami_id
-  instance_type = "t2.micro"
+resource "aws_instance" "ec2_instance" {
+  ami                    = "ami-09c813fb71547fc4f"
+  instance_type          = "t3.micro"
+  vpc_security_group_ids = [aws_security_group.all-allow.id]
 
   tags = {
-    Name = "terraform-instance"
+    Name = "Roboshop"
   }
 }
 
-resource "aws_security_group" "allow-all" {
-  name        = "allow-all"
+resource "aws_security_group" "all-allow" {
+  name        = "all-allow"
   description = "Allow all traffic"
 
   ingress {
