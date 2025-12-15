@@ -7,7 +7,7 @@ resource "aws_instance" "ec2_instance" {
   vpc_security_group_ids = [aws_security_group.all-allow.id]
 
   tags = {
-    Name = each.value
+    Name = each.key
   }
 }
 
