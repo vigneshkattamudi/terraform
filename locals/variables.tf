@@ -7,7 +7,7 @@ variable "environment" {
 }
 
 variable "component" {
-    default = "mongodb"
+    default = "cart"
 }
 
 variable "common_tags"{
@@ -18,7 +18,7 @@ variable "common_tags"{
 }
 
 /* variable "final-name" {
-    default = "${var.project}-${var.environment}-${var.component}" #cannot write varibale inside variable
+    default = "${var.project}-${var.environment}-${var.component}"
 } */
 
 # ec2 name = cart
