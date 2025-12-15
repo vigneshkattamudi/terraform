@@ -17,9 +17,9 @@ variable "common_tags"{
     }
 }
 
-/* variable "final-name" {
-    default = "${var.project}-${var.environment}-${var.component}"
-} */
+# /* variable "final-name" {
+#     default = "${var.project}-${var.environment}-${var.component}"
+# } */
 
 # ec2 name = cart
 # ec2 name = roboshop-dev-cart
