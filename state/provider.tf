@@ -8,10 +8,11 @@ terraform {
 
   backend "s3" {
     bucket = "dsops84-remote-state"
+    dynamodb_table = "dsops84-remote-state"
     key   = "terraform-state-demo"
     region = "us-east-1"
-    encrypt        = true
-    use_lockfile = true
+    # encrypt        = true
+    # use_lockfile = true
   }
 }
 
