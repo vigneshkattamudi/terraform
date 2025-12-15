@@ -47,11 +47,11 @@ variable "sg_tags" {
 
 variable "environiment" {
   default = "dev"
-  
+
 }
 
 variable "instances" {
-  default = [ "mongodb" , "redis", "mysql" , "rabbitmq" , "catalogue", "user" , "cart" , "shipping" , "payment" , "frontend" ]
+  default = ["mongodb", "redis", ]
 }
 
 variable "zone_id" {
@@ -63,6 +63,23 @@ variable "domain_name" {
 }
 
 variable "protocol" {
-  default = "-1"  
+  default = "-1"
 }
 
+variable "ingress_rules" {
+  default = [
+    {
+      from_port   = 80
+      to_port     = 80
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    },
+    {
+      from_port   = 443
+      to_port     = 443
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  ]
+
+}
